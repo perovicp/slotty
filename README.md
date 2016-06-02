@@ -1,0 +1,2 @@
+# slotty
+Demo slot machine
