@@ -1,0 +1,59 @@
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Endless Slot Demo</title>
+        <link rel="stylesheet" href="css/main.css"/>
+		<script src="bin/pixi.min.js"></script>
+        <script src="bin/jquery.js"></script>
+        <script src="bin/main.js"></script>
+        <script src="bin/CheckWin.js"></script>
+        <script src="resources/configStartSlot.js"></script>
+	</head>
+	<body onload="init();">
+
+        <audio id="background_music" controls loop>
+            <source src="resources/audio/longer2.mp3" type="audio/mpeg">
+            Your browser does not support HTML5 audio element.
+        </audio>
+        <audio id="win_music">
+            <source src="resources/audio/win2.mp3" type="audio/mpeg">
+            Your browser does not support HTML5 audio element.
+        </audio>
+        <audio id="spin_music">
+            <source src="resources/audio/spinit1.mp3" type="audio/mpeg">
+            Your browser does not support HTML5 audio element.
+        </audio>
+
+        <div id="main_wrap">
+            <div align="center" id="balance">
+                <h2 id="balance_amount"></h2>
+            </div>
+
+            <div align="center" class="warningText insufficientFunds hidden">
+                <h3>insufficient funds!</h3>
+            </div>
+            <div id="bet_panel" class="bet_panel">
+                <div id="bet_selector_container" class="bet_panel_element">
+                    <select id="bet_selector">
+                        <option value="ten">10</option>
+                        <option value="twenty">20</option>
+                        <option value="fifty">50</option>
+                        <option value="hundred">100</option>
+                    </select>
+                </div>
+
+                <div id="win_amount" class="bet_panel_element">
+                    <h2>Win amount: 0</h2>
+                </div>
+                <div class="bet_panel_element">
+                    <div align="center" id="button" class="spin_btn">
+                        <img src="resources/img/spin3.jpg" alt="Spin Button" height="50" width="50" onclick="SpinIt()" align="center">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+	</body>
+</html>

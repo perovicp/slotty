@@ -1,0 +1,73 @@
+body {
+    background-color: #000000;
+}
+
+h2 {
+    color: #FFFFFF;
+    text-align: center;
+}
+
+#button{
+    width: 50px; height: 50px;
+    background-color: #000000;
+    
+}
+
+#button img{
+    margin-left: -5% ;
+    /* border: 1px solid violet; */
+}
+
+#balance{
+    width: 500px; height: 30px;
+}
+
+.bet_panel{
+    width: 500px;
+    height: 70px;
+}
+
+    .bet_panel_element{
+        display:inline-block;
+        box-sizing: border-box;
+        width:32%;
+    }
+
+    .bet_panel_element .spin_btn{
+        margin:0 auto;
+    }
+
+#bet_selector_container {
+    /*padding-top: 15px;
+    padding-left: 20px;
+
+    margin-left: auto;*/
+    /* border: 1px solid cadetblue; */
+}
+
+#bet_selector_container select{
+    /*margin-left: 10%;*/
+    /* border: 1px solid yellow; */
+}
+
+#win_amount{
+    color: #FFFFFF;
+    font-size: 9pt;
+    /*border: 1px solid blue; */
+}
+
+#main_wrap {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.warningText{
+    color:orange;
+}
+.insufficientFunds{
+    text-align:center;
+    width:100%;
+}
+.hidden{
+    display:none;
+}
