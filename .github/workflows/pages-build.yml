@@ -3,7 +3,8 @@ name: Custom Deploy
 on:
     push:
         branches:
-            - main
+            - main 
+            - gh-pages
     workflow_dispatch:
 
 jobs:
