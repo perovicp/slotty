@@ -24,8 +24,10 @@ jobs:
         run: |
           mkdir -p _site
           cp -R ./* _site/
+          shopt -s dotglob
+          cp -R --no-preserve=links $(ls - A | grep -vE '^(\.git|\.DS_Store|node_modules)$') _site/
         # Adjust "cp" command if your source directory differs
-
+        
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
