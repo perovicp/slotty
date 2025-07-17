@@ -18,7 +18,7 @@ jobs:
       - name: Prepare static files
         run: |
           mkdir -p _site
-          cp -R src/* _site/
+          cp -R ./* _site/
         # Adjust "src" to your actual source directory
 
       - name: Upload artifact
