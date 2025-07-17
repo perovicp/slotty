@@ -1,0 +1,53 @@
+name: Custom Deploy
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+  build:
+    name: Build site with Jekyll
+    runs-on: [self-hosted, macOS, ARM64]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build site with Jekyll (GitHub Pages)
+        uses: actions/jekyll-build-pages@v1
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+
+      - name: Upload generic artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ./_site
+
+  report-build-status:
+    name: Report Build Status
+    runs-on: [self-hosted, macOS, ARM64]
+    needs: build
+
+    steps:
+      - name: Report build status to GitHub Pages telemetry
+        run: |
+          gh api -X POST "repos/$GITHUB_REPOSITORY/pages/telemetry" \
+            -F github_run_id="$GITHUB_RUN_ID" \
+            -F conclusion="$CONCLUSION"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CONCLUSION: success
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: [self-hosted, macOS, ARM64]
+    needs: report-build-status
+
+    steps:
+      - name: Deploy GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages
